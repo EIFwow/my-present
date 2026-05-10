@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>초특급 비밀 선물 센터</title>
+    <title>초특급 선물 도착!</title>
     <style>
-        /* 1. 화면 전체를 180도 뒤집어버리는 마법 */
+        /* 글자는 똑바로 나오게 설정 */
         body {
             display: flex;
             flex-direction: column;
@@ -12,50 +12,57 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
-            transform: rotate(180deg); /* 이 줄을 지우면 똑바로 돌아옵니다 */
-            transition: transform 1s;
+            background-color: #ffffff;
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
         }
 
-        h1 { font-size: 2rem; color: #333; }
+        h1 { color: #2d3436; margin-bottom: 10px; }
+        p { color: #636e72; margin-bottom: 30px; }
 
-        /* 2. 도망가는 버튼 스타일 */
+        /* 도망가는 버튼 스타일 */
         #runaway-btn {
-            padding: 15px 30px;
-            font-size: 20px;
-            background-color: #ff4757;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #0984e3;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 50px;
             cursor: pointer;
-            position: absolute;
-            transition: 0.2s;
+            position: absolute; /* 자유롭게 움직이려면 필수! */
+            transition: 0.1s ease-out; /* 도망가는 속도감 (낮을수록 빠름) */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
 
-    <h1>야! 너를 위해 준비한 선물이 여기 있어!</h1>
-    <p>아래 버튼을 클릭해서 선물을 확인해봐!</p>
+    <h1>🎁 특별한 선물이 도착했습니다! 🎁</h1>
+    <p>아래의 '선물 받기' 버튼을 눌러 확인해 보세요.</p>
     
-    <button id="runaway-btn">🎁 선물 받기</button>
+    <button id="runaway-btn" style="top: 60%; left: 50%; transform: translate(-50%, -50%);">
+        선물 받기
+    </button>
 
     <script>
         const btn = document.getElementById('runaway-btn');
 
-        // 마우스가 버튼 근처에 가면 도망가게 만들기
+        // 마우스가 버튼 위에 올라오면(hover) 즉시 도망가기
         btn.addEventListener('mouseover', () => {
+            // 브라우저 화면의 너비와 높이에서 버튼 크기를 뺀 만큼만 움직이게 계산
             const x = Math.random() * (window.innerWidth - btn.clientWidth);
             const y = Math.random() * (window.innerHeight - btn.clientHeight);
             
+            // 위치 업데이트
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
+            btn.style.transform = 'none'; // 처음에 중앙 정렬했던 transform 제거
         });
 
-        // 혹시라도 클릭에 성공했을 때의 반응
+        // 만약 광클로 클릭에 성공했을 때
         btn.addEventListener('click', () => {
-            alert('오... 이걸 클릭하네? 집요한 녀석;');
-            alert('하지만 선물은 없단다. 메롱!');
+            alert('헐... 이걸 클릭하시네? 대단하다!');
+            alert('근데 사실 선물은 준비 안 했어. 미안!');
         });
     </script>
 </body>
